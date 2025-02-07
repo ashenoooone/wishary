@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import './globals.css';
+import {
+  ThemeProvider,
+  WithTheme,
+} from '@/app/theme-provider';
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -10,7 +14,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: 'wishary',
-  description: '',
+  description: '12',
 };
 
 export default function RootLayout({
@@ -19,8 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${manrope.variable} antialiased`}>{children}</body>
-    </html>
+    <ThemeProvider>
+      <WithTheme>
+        <body className={`antialiased ${manrope.variable}`}>
+          {children}
+        </body>
+      </WithTheme>
+    </ThemeProvider>
   );
 }
