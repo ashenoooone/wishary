@@ -4,7 +4,44 @@
     "next/typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "boundaries"],
+  "settings": {
+    "boundaries/include": ["src/**/*"],
+    "boundaries/elements": [
+      {
+        "type": "app",
+        "pattern": "1_app"
+      },
+      {
+        "type": "pages",
+        "pattern": "2_pages/*",
+        "capture": ["page"]
+      },
+      {
+        "type": "features",
+        "pattern": "3_features/*",
+        "capture": ["feature"]
+      },
+      {
+        "type": "services",
+        "pattern": "4_services/*",
+        "capture": ["service"]
+      },
+      {
+        "type": "kernel",
+        "pattern": "5_kernel/*"
+      },
+      {
+        "type": "shared",
+        "pattern": "6_shared/*"
+      }
+    ],
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "boundaries/entry-point": [
