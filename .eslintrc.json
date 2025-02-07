@@ -50,7 +50,12 @@
         "default": "disallow",
         "rules": [
           {
-            "target": ["pages", "features", "services", "widgets"],
+            "target": [
+              "pages",
+              "features",
+              "services",
+              "widgets"
+            ],
             "allow": ["index.ts", "index.tsx"]
           },
           {
@@ -82,12 +87,23 @@
           },
           {
             "from": ["kernel"],
-            "disallow": ["app", "pages", "features", "services"],
+            "disallow": [
+              "app",
+              "pages",
+              "features",
+              "services"
+            ],
             "message": "Kernel must not import upper layers (${dependency.type})"
           },
           {
             "from": ["shared"],
-            "disallow": ["app", "pages", "features", "services", "kernel"],
+            "disallow": [
+              "app",
+              "pages",
+              "features",
+              "services",
+              "kernel"
+            ],
             "message": "Shared must not import upper layers (${dependency.type})"
           },
           {
