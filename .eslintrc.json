@@ -1,0 +1,84 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "boundaries/entry-point": [
+      "error",
+      {
+        "default": "disallow",
+        "rules": [
+          {
+            "target": ["pages", "features", "services", "widgets"],
+            "allow": ["index.ts", "index.tsx"]
+          },
+          {
+            "target": ["app", "shared", "kernel"],
+            "allow": "**/*.*"
+          }
+        ]
+      }
+    ],
+    "boundaries/element-types": [
+      "error",
+      {
+        "default": "allow",
+        "rules": [
+          {
+            "from": ["pages"],
+            "message": "Page must not import upper layers (${dependency.type})",
+            "disallow": ["app"]
+          },
+          {
+            "from": "features",
+            "disallow": ["app", "pages"],
+            "message": "Feature must not import upper layers (${dependency.type})"
+          },
+          {
+            "from": ["services"],
+            "disallow": ["app", "pages", "features"],
+            "message": "Entity must not import upper layers (${dependency.type})"
+          },
+          {
+            "from": ["kernel"],
+            "disallow": ["app", "pages", "features", "services"],
+            "message": "Kernel must not import upper layers (${dependency.type})"
+          },
+          {
+            "from": ["shared"],
+            "disallow": ["app", "pages", "features", "services", "kernel"],
+            "message": "Shared must not import upper layers (${dependency.type})"
+          },
+          {
+            "from": ["pages"],
+            "message": "Page must not import other page",
+            "disallow": [
+              [
+                "pages",
+                {
+                  "page": "!${page}"
+                }
+              ]
+            ]
+          },
+          {
+            "from": ["features"],
+            "message": "Feature must not import other feature",
+            "disallow": [
+              [
+                "features",
+                {
+                  "feature": "!${feature}"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
