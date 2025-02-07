@@ -9,7 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/shared/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/shared/ui/tabs';
 import { Toggle } from '@/shared/ui/toggle';
 
 export default function Home() {
