@@ -33,11 +33,7 @@ export const Sidebar = (props: Props) => {
   );
 };
 
-const SidebarItem = ({
-  icon,
-  label,
-  link,
-}: SidebarItem) => {
+const SidebarItem = ({ label, link }: SidebarItem) => {
   return (
     <Link href={link} className="flex items-center gap-2">
       {/* <Image alt={label} src={icon} /> */}
