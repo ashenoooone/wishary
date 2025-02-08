@@ -67,8 +67,17 @@ export const ThemeProvider = ({
 
 export const WithTheme = ({
   children,
-}: PropsWithChildren) => {
+  className,
+}: { className?: string } & PropsWithChildren) => {
   const { theme } = useTheme();
 
-  return <html className={theme}>{children}</html>;
+  return (
+    <html className={theme}>
+      <body
+        className={`antialiased ${className} flex gap-10 px-4 py-2`}
+      >
+        {children}
+      </body>
+    </html>
+  );
 };

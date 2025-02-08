@@ -5,6 +5,8 @@ import {
   ThemeProvider,
   WithTheme,
 } from '@/app/theme-provider';
+import { Page } from '@/shared/ui/page';
+import { Sidebar } from '@/shared/ui/sidebar';
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -17,6 +19,24 @@ export const metadata: Metadata = {
   description: '12',
 };
 
+const sidebarItems = [
+  {
+    label: 'Home',
+    link: '/',
+    icon: '',
+  },
+  {
+    label: 'Washing machines',
+    link: '/washing-machines',
+    icon: '',
+  },
+  {
+    label: 'Profile',
+    link: '/profile',
+    icon: '',
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,10 +44,9 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider>
-      <WithTheme>
-        <body className={`antialiased ${manrope.variable}`}>
-          {children}
-        </body>
+      <WithTheme className={manrope.variable}>
+        <Sidebar items={sidebarItems} />
+        <Page>{children}</Page>
       </WithTheme>
     </ThemeProvider>
   );
